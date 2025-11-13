@@ -2,9 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to Unity",
+            "name": "Attach to Unity Editor",
             "type": "vstuc",
-            "request": "attach"
+            "request": "attach",
+            "address": "localhost",
+            "port": 56000
+        },
+        {
+            "name": "Attach to Unity Player (Standalone)",
+            "type": "vstuc",
+            "request": "attach",
+            "address": "localhost",
+            "port": 56001
         }
-     ]
+    ]
 }
