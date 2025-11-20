@@ -7,11 +7,11 @@ using System.IO.Ports;
 
 public class Status : MonoBehaviour
 {
-    SerialPort sp = new SerialPort("COM21", 9600);
+    SerialPort sp = new SerialPort("COM4", 9600);
 
-    public GameObject highWaterLevel;      // Wird aktiviert, wenn Wasser erkannt wird
+    public GameObject highWaterLevel;      // activated when Water detected
     public GameObject mediumWaterLevel;
-    public GameObject lowWaterLevel;        // Wird aktiviert, wenn kein Wasser erkannt wird
+    public GameObject lowWaterLevel;        // activated when no water detected
     public Material materialActivated;
     public Material materialDeactivated;
 
