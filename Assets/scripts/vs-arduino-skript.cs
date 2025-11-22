@@ -7,17 +7,18 @@ using System.IO.Ports;
 
 public class Status : MonoBehaviour
 {
-    SerialPort sp = new SerialPort("COM4", 9600);
+    SerialPort sp = new SerialPort("COM19", 9600);
 
     public GameObject highWaterLevel;      // activated when Water detected
     public GameObject mediumWaterLevel;
     public GameObject lowWaterLevel;        // activated when no water detected
-    public Material materialActivated;
-    public Material materialDeactivated;
+    public Color materialActivated;
+    public Color materialDeactivated;
 
     void Start()
     {
         try {
+            Debug.Log(Application.platform);
             sp.Open();
             sp.ReadTimeout = 1;
             Debug.Log("Serial Port open.");
@@ -51,11 +52,11 @@ public class Status : MonoBehaviour
         {
             Debug.Log("Water high");
             //if (highWaterLevel != null) highWaterLevel.SetActive(true);
-            highWaterLevel.GetComponent<Renderer>().material = materialActivated;
+            highWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
             //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(true);
-            mediumWaterLevel.GetComponent<Renderer>().material = materialActivated;
+            mediumWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
             //if (lowWaterLevel != null) lowWaterLevel.SetActive(true);
-            lowWaterLevel.GetComponent<Renderer>().material = materialActivated;
+            lowWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
 
 
             }
@@ -63,22 +64,22 @@ public class Status : MonoBehaviour
                 {
                 Debug.Log("Water medium");
                 //if (highWaterLevel != null) highWaterLevel.SetActive(false);
-                highWaterLevel.GetComponent<Renderer>().material = materialDeactivated;
+                highWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
                 //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(true);
-                mediumWaterLevel.GetComponent<Renderer>().material = materialActivated;
+                mediumWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
                 //if (lowWaterLevel != null) lowWaterLevel.SetActive(true);
-                lowWaterLevel.GetComponent<Renderer>().material = materialActivated;
+                lowWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
 
                 }
             else
             {
                 Debug.Log("Water low");
                 //if (highWaterLevel != null) highWaterLevel.SetActive(false);
-                highWaterLevel.GetComponent<Renderer>().material = materialDeactivated;
+                highWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
                 //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(false);
-                mediumWaterLevel.GetComponent<Renderer>().material = materialDeactivated;
+                mediumWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
                 //if (lowWaterLevel != null) lowWaterLevel.SetActive(true);
-                lowWaterLevel.GetComponent<Renderer>().material = materialActivated;
+                lowWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
             }
         }
     }
