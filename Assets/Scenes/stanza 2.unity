@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 179785667}
   - component: {fileID: 179785666}
   - component: {fileID: 179785665}
+  - component: {fileID: 179785669}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -420,7 +421,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1924793024}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -453,6 +454,27 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: 1}
   m_SizeDelta: {x: 500.75, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!65 &179785669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179785664}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &196337407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4539043608626423805, guid: 266d5a1d00e2ac2479b93bdd1914ad78, type: 3}
@@ -689,6 +711,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ecea0e23a6d8d245bbee0e40c16ebf9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 179785668}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ecea0e23a6d8d245bbee0e40c16ebf9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1982642698}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ecea0e23a6d8d245bbee0e40c16ebf9, type: 3}
       insertIndex: -1
@@ -3476,6 +3501,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+--- !u!20 &1924793024 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 675059686}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1982642696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,12 +3542,12 @@ MonoBehaviour:
       m_Name: Tasto Attivazione
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 80d9e628-1e2c-417f-9fe3-d9b915c20b5e
+      m_Id: d30cb46e-6505-4638-bc87-e6c593821df9
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 501aefe3-cca4-4672-a2aa-2d5c7e96867f
+        m_Id: 2997dec2-7861-4990-b2bc-bc20b7427757
         m_Path: <XRController>{RightHand}/primaryButton
         m_Interactions: 
         m_Processors: 
@@ -3534,12 +3564,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982642696}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.832785, y: 0.8200655, z: 2.2587368}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.4454205, y: -0.21113794, z: -1.1813313}
+  m_LocalScale: {x: 0.58823526, y: 0.58823526, z: 0.58823526}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 347385176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136336106
 GameObject:
@@ -3849,4 +3879,3 @@ SceneRoots:
   - {fileID: 1445312978}
   - {fileID: 1803187102}
   - {fileID: 1490958815}
-  - {fileID: 1982642698}

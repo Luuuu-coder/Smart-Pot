@@ -14,7 +14,7 @@ int sensorValue;
 
 char unityInput; 
 
-const int AirValue = 520;   //you need to replace this value with Value_1
+const int AirValue = 717;   //you need to replace this value with Value_1
 const int WaterValue = 260;  //you need to replace this value with Value_2
 int intervals = (AirValue - WaterValue)/3;
 
