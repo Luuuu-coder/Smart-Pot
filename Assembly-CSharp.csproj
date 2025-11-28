@@ -42,7 +42,7 @@
     <UnityVersion>6000.0.58f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\feder\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\leoni\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.58f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.58f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.58f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -57,8 +57,8 @@
     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Common\Scripts &amp; Animation\TableFlip\TableFlipR.cs" />
     <Compile Include="Assets\Brick Project Studio\_BPS Basic Assets\Common\Scripts and Animations\Drawer\X Axis\Drawer_Pull_X.cs" />
     <Compile Include="Assets\Brick Project Studio\_BPS Basic Assets\Common\Scripts and Animations\Doors\opencloseDoor1.cs" />
-    <Compile Include="Assets\scripts\MenuManager.cs" />
     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Common\Scripts &amp; Animation\Slide\BRGlassDoor.cs" />
+    <Compile Include="Assets\scripts\MenuController.cs" />
     <Compile Include="Assets\Brick Project Studio\_BPS Basic Assets\Common\Scripts and Animations\Drawer\Z Axis\Drawer_Pull_Z.cs" />
     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Common\Scripts &amp; Animation\Slide\opencloseSlide.cs" />
     <Compile Include="Assets\Brick Project Studio\_BPS Basic Assets\Common\Scripts and Animations\Doors\opencloseDoor.cs" />
@@ -66,6 +66,7 @@
     <Compile Include="Assets\Brick Project Studio\_BPS Basic Assets\Common\Scripts and Animations\First Person Player\PlayerMovement.cs" />
     <Compile Include="Assets\Brick Project Studio\_BPS Basic Assets\Common\Scripts and Animations\Doors\opencloseStallDoor.cs" />
     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Common\Scripts &amp; Animation\TableFlip\TableFlipL.cs" />
+    <Compile Include="Assets\scripts\watering.cs" />
     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Common\Scripts &amp; Animation\Closet\ClosetopencloseDoor.cs" />
     <Compile Include="Assets\Brick Project Studio\_BPS Basic Assets\Common\Scripts and Animations\Windows\opencloseWindow1.cs" />
     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Common\Scripts &amp; Animation\Windows\opencloseWindowApt.cs" />
@@ -1094,48 +1095,8 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.58f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.Interaction.Toolkit.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.MetaOpenXR.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.MetaOpenXR.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.CoreUtils">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.VisualScripting.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.InternalUtils.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.InternalUtils.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
@@ -1146,24 +1107,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.Simulation.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Simulation.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
@@ -1182,44 +1127,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Multiplayer.Center.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.CompositionLayers">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CompositionLayers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.InternalUtils">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.InternalUtils.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARSubsystems">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARSubsystems.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PPv2URPConverters">
@@ -1230,26 +1143,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.Rendering.LightTransport.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.Management.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.VisualScripting">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.CompositionLayers.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CompositionLayers.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
       <Private>False</Private>
@@ -1258,176 +1151,36 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Collections.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Multiplayer.Center.Common">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.ConformanceAutomation">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.ConformanceAutomation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.Management">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARSubsystems.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARSubsystems.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARAnalytics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARAnalytics.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.Interaction.Toolkit">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.MetaOpenXR">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.MetaOpenXR.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.ARFoundation.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.CompositionLayers.UIInteraction.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CompositionLayers.UIInteraction.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.Simulation">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Simulation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.CompositionLayers.UIInteraction">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CompositionLayers.UIInteraction.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.CoreUtils.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.Rendering.LightTransport.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
@@ -1436,9 +1189,78 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.XR.Interaction.Toolkit.Editor.csproj" />
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj" />
+    <ProjectReference Include="Unity.InputSystem.ForUI.csproj" />
+    <ProjectReference Include="Unity.XR.MetaOpenXR.Editor.csproj" />
+    <ProjectReference Include="Unity.Rider.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.CoreUtils.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.csproj" />
+    <ProjectReference Include="Unity.Searcher.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.Features.OculusQuestSupport.csproj" />
+    <ProjectReference Include="Unity.XR.ARFoundation.VisualScripting.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.ARFoundation.InternalUtils.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Simulation.Editor.csproj" />
+    <ProjectReference Include="Unity.Timeline.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.ARStarterAssets.Editor.csproj" />
+    <ProjectReference Include="Unity.Timeline.csproj" />
+    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Hands.Samples.VisualizerSample.csproj" />
+    <ProjectReference Include="Unity.XR.CompositionLayers.csproj" />
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.ARFoundation.csproj" />
+    <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj" />
+    <ProjectReference Include="UnityEditor.XR.LegacyInputHelpers.csproj" />
+    <ProjectReference Include="Unity.XR.ARFoundation.InternalUtils.csproj" />
+    <ProjectReference Include="Unity.XR.ARSubsystems.csproj" />
+    <ProjectReference Include="Unity.Collections.csproj" />
+    <ProjectReference Include="Unity.XR.Management.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.ARFoundation.VisualScripting.csproj" />
+    <ProjectReference Include="UnityEngine.XR.LegacyInputHelpers.csproj" />
+    <ProjectReference Include="Unity.XR.Hands.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Core.csproj" />
+    <ProjectReference Include="Unity.XR.CompositionLayers.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.ARStarterAssets.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.csproj" />
+    <ProjectReference Include="Unity.Collections.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj" />
+    <ProjectReference Include="UnityEngine.SpatialTracking.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Hands.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.Features.ConformanceAutomation.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Management.csproj" />
+    <ProjectReference Include="Unity.XR.ARSubsystems.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.ARAnalytics.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Interaction.Toolkit.csproj" />
+    <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
+    <ProjectReference Include="Unity.Mathematics.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.MetaOpenXR.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.ARFoundation.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.CompositionLayers.UIInteraction.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.State.csproj" />
+    <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.Hands.csproj" />
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.Features.MetaQuestSupport.csproj" />
+    <ProjectReference Include="Unity.Burst.Editor.csproj" />
+    <ProjectReference Include="Unity.XR.Simulation.csproj" />
+    <ProjectReference Include="Unity.XR.OpenXR.csproj" />
+    <ProjectReference Include="Unity.Burst.csproj" />
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
+    <ProjectReference Include="Unity.XR.CompositionLayers.UIInteraction.csproj" />
+    <ProjectReference Include="Unity.XR.CoreUtils.Editor.csproj" />
+    <ProjectReference Include="UnityEditor.SpatialTracking.csproj" />
+    <ProjectReference Include="Unity.InputSystem.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
