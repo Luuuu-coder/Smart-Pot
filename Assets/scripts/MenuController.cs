@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
         // Ora il tasto dovrebbe rispondere
         if (tastoAttivazione.action.WasPressedThisFrame())
         {
-            Debug.Log("TASTO PREMUTO CORRETTAMENTE!"); // Lasciamo il debug per sicurezza
+            //Debug.Log("TASTO PREMUTO CORRETTAMENTE!"); // Lasciamo il debug per sicurezza
            
             if (menuDaAprire != null)
             {

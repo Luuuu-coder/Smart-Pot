@@ -25,6 +25,8 @@ void setup() {
   pinMode(interactionPinWater, INPUT);
   pinMode(interactionPinAutomation, INPUT);
   pinMode(pumpPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
 
 }
 
@@ -38,7 +40,7 @@ void loop() {
     // Serial.write(0);
     Serial.println(0);
     Serial.flush();
-    delay(20);
+    delay(200);
   }
   else if(soilMoistureValue > (WaterValue + intervals) && soilMoistureValue < (AirValue - intervals))
   {
@@ -46,7 +48,7 @@ void loop() {
     // Serial.write(1);
     Serial.println(1);
     Serial.flush();
-    delay(20);
+    delay(200);
   }
   else if(soilMoistureValue < AirValue && soilMoistureValue > (AirValue - intervals))
   {
@@ -54,27 +56,30 @@ void loop() {
     // Serial.write(2);
     Serial.println(2);
     Serial.flush();
-    delay(20);
+    delay(200);
 
     // Serial.println("Turning pump ON");
     // digitalWrite(pumpPin, HIGH);
     delay(3000); // Wait three seconds
   
-    Serial.println("Turning pump OFF");
-    digitalWrite(pumpPin, LOW);
-    delay(3000); // Wait three seconds
+    //Serial.println("Turning pump OFF");
+    //digitalWrite(pumpPin, LOW);
+    //delay(3000); // Wait three seconds
   }
   
   if(Serial.available()>0){
     unityInput = Serial.read();
-    if(unityInput=='1'){
-        Serial.println("Turning pump ON");
+    if(unityInput=='A'){
+        Serial.println(91);
         digitalWrite(pumpPin, HIGH);
+        digitalWrite(LED_BUILTIN, HIGH);
+
         delay(3000); // Wait three seconds
       
         Serial.println("Turning pump OFF");
         digitalWrite(pumpPin, LOW);
-        delay(3000); // Wait three seconds
+        digitalWrite(LED_BUILTIN, LOW);
+        delay(1000); // Wait three seconds
     }
   }
 }

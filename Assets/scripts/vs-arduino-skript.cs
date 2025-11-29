@@ -46,11 +46,12 @@ public class Status : MonoBehaviour
             {
             }
     }
+
     void UpdateWaterStatus(int dir)
     {
         if (dir == 0)
         {
-            Debug.Log("Water high");
+            //Debug.Log("Water high");
             //if (highWaterLevel != null) highWaterLevel.SetActive(true);
             highWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
             //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(true);
@@ -62,7 +63,7 @@ public class Status : MonoBehaviour
             }
             else if (dir == 1)
                 {
-                Debug.Log("Water medium");
+                //Debug.Log("Water medium");
                 //if (highWaterLevel != null) highWaterLevel.SetActive(false);
                 highWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
                 //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(true);
@@ -71,9 +72,9 @@ public class Status : MonoBehaviour
                 lowWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
 
                 }
-            else
+            else if(dir == 2)
             {
-                Debug.Log("Water low");
+                //Debug.Log("Water low");
                 //if (highWaterLevel != null) highWaterLevel.SetActive(false);
                 highWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
                 //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(false);
@@ -81,6 +82,18 @@ public class Status : MonoBehaviour
                 //if (lowWaterLevel != null) lowWaterLevel.SetActive(true);
                 lowWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
             }
+            else
+            {
+                Debug.Log("Message recives:" + dir);
+            }
+        }
+    }
+    public void SendToArduino(string message)
+    {
+        if (sp != null && sp.IsOpen)
+        {
+            Debug.Log("Befehl gesendet");
+            sp.WriteLine(message);
         }
     }
 }
