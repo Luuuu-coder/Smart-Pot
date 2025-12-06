@@ -6,7 +6,6 @@ int interactionPinWater = 3;
 int interactionPinAutomation;
 
 int soilMoistureValue;
-int lightValue;
 
 int pumpPin = 5;
 
@@ -33,16 +32,40 @@ void setup() {
 
 void loop() {
 
-  soilMoistureValue = analogRead(sensorPinMoisture);  //put Sensor insert into soil
-  Serial.println("SoilValue: " + soilMoistureValue);
-  //Serial.flush();
-  //delay(200);
-
-  lightValue = analog.read(sensorPinSun);
-  Serial.println("LightValue: " + lightValue);
-  //Serial.flush();
-  delay(200);
   
+  soilMoistureValue = analogRead(sensorPinMoisture);  //put Sensor insert into soil
+  if(soilMoistureValue > WaterValue && soilMoistureValue < (WaterValue + intervals))
+  {
+    // Serial.println("Wet");
+    // Serial.write(0);
+    Serial.println(0);
+    Serial.flush();
+    delay(200);
+  }
+  else if(soilMoistureValue > (WaterValue + intervals) && soilMoistureValue < (AirValue - intervals))
+  {
+    // Serial.println("Medium");
+    // Serial.write(1);
+    Serial.println(1);
+    Serial.flush();
+    delay(200);
+  }
+  else if(soilMoistureValue < AirValue && soilMoistureValue > (AirValue - intervals))
+  {
+    // Serial.println("Dry");
+    // Serial.write(2);
+    Serial.println(2);
+    Serial.flush();
+    delay(200);
+
+    // Serial.println("Turning pump ON");
+    // digitalWrite(pumpPin, HIGH);
+    delay(3000); // Wait three seconds
+  
+    //Serial.println("Turning pump OFF");
+    //digitalWrite(pumpPin, LOW);
+    //delay(3000); // Wait three seconds
+  }
   
   if(Serial.available()>0){
     unityInput = Serial.read();
