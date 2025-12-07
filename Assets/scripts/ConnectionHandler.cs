@@ -7,13 +7,13 @@ public class ConnectionHandler : MonoBehaviour
 {
     public Button connectButton;
     public TextMeshProUGUI buttonText;
+    public ParticleButtonController partcilesAction;
 
     public string initialtext = "Press to initialize connection";
     public string connectedtext = "Press to water the plant";
     
     public ESP32Connector esp32Connector;
     private Action defaultAction;
-    private bool isConnected = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,39 +24,29 @@ public class ConnectionHandler : MonoBehaviour
             enabled = false; 
             return;
         }
-        buttonText.text = initialtext;
-        UpdateButtonState();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (esp32Connector.IsConnected == true)
-        {
-        UpdateButtonState();
-        }
-    }
-
-    private void UpdateButtonState()
-    {
         if (esp32Connector.IsConnected)
         {
-            if (buttonText.text != connectedtext) {
-            buttonText.text = connectedtext;
-            connectButton.onClick.RemoveAllListeners();
-            connectButton.onClick.AddListener(() => esp32Connector.Send("WATER_PLANT"));
+            if (buttonText.text != connectedtext) 
+            {
+                buttonText.text = connectedtext;
+                connectButton.onClick.RemoveAllListeners();
+                connectButton.onClick.AddListener(() => esp32Connector.Send("WATER_PLANT"));
+                connectButton.onClick.AddListener(() => partcilesAction.OnButtonPressed());
             }
             connectButton.interactable = true;
         }
         else
         {
-            if (buttonText.text != initialtext)
-            {
+
             buttonText.text = initialtext;
             // connectButton.colors = Color.white;
             connectButton.onClick.RemoveAllListeners();
             connectButton.onClick.AddListener(() => esp32Connector.Connect());
-            }
             connectButton.interactable = true;
         }
     }

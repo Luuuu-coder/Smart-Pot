@@ -11106,14 +11106,15 @@ MonoBehaviour:
   mediumWaterLevel: {fileID: 115736396}
   lowWaterLevel: {fileID: 2137222280}
   lightIndicator: {fileID: 1502182388}
+  connectButton: {fileID: 1719878208}
   materialActivated: {r: 0.3137255, g: 0.6117647, b: 0.8039216, a: 1}
   materialDeactivated: {r: 0.77254903, g: 0.83137256, b: 0.8627451, a: 1}
-  materialdark: {r: 0.4113207, g: 0.4113207, b: 0.4113207, a: 0.972549}
-  materialbright: {r: 0.95894676, g: 0.98490566, b: 0.48130295, a: 1}
-  materialverybright: {r: 1, g: 0.79558706, b: 0.18679237, a: 1}
+  materialdark: {r: 0.4113207, g: 0.4113207, b: 0.4113207, a: 1}
+  materialdim: {r: 0.9622642, g: 0.5674679, b: 0.20153081, a: 1}
+  materialbright: {r: 1, g: 0.8415554, b: 0.2999999, a: 1}
+  materialverybright: {r: 1, g: 0.89551073, b: 0.58679235, a: 1}
   ip: 10.91.17.12
   port: 3333
-  connectButton: {fileID: 1719878208}
 --- !u!1 &1362132594
 GameObject:
   m_ObjectHideFlags: 0
@@ -13084,55 +13085,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1719878211}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1946071162}
-        m_TargetAssemblyTypeName: ParticleButtonController, Assembly-CSharp
-        m_MethodName: OnButtonPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1353553250}
-        m_TargetAssemblyTypeName: Status, Assembly-CSharp
-        m_MethodName: SendToArduino
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: A
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1353553251}
-        m_TargetAssemblyTypeName: ESP32Connector, Assembly-CSharp
-        m_MethodName: Connect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1353553251}
-        m_TargetAssemblyTypeName: ESP32Connector, Assembly-CSharp
-        m_MethodName: Send
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: message sent
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1719878211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13805,13 +13758,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946071160}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f7725cb281d2f45a4922994f2187f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   connectButton: {fileID: 1719878210}
   buttonText: {fileID: 519120972}
+  partcilesAction: {fileID: 1946071162}
   initialtext: Press to initialize connection
   connectedtext: Press to water the plant
   esp32Connector: {fileID: 1353553251}
