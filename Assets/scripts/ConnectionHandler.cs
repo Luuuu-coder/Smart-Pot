@@ -24,22 +24,22 @@ public class ConnectionHandler : MonoBehaviour
             enabled = false; 
             return;
         }
+        buttonText.text = initialtext;
         UpdateButtonState();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (esp32Connector != null)
+        if (esp32Connector.IsConnected == true)
         {
-         isConnected = true;   
-        }
         UpdateButtonState();
+        }
     }
 
     private void UpdateButtonState()
     {
-        if (isConnected)
+        if (esp32Connector.IsConnected)
         {
             if (buttonText.text != connectedtext) {
             buttonText.text = connectedtext;
@@ -53,6 +53,7 @@ public class ConnectionHandler : MonoBehaviour
             if (buttonText.text != initialtext)
             {
             buttonText.text = initialtext;
+            // connectButton.colors = Color.white;
             connectButton.onClick.RemoveAllListeners();
             connectButton.onClick.AddListener(() => esp32Connector.Connect());
             }

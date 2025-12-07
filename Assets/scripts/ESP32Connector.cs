@@ -9,23 +9,40 @@ public class ESP32Connector : MonoBehaviour
     public GameObject mediumWaterLevel;
     public GameObject lowWaterLevel;        // activated when no water detected
     public GameObject lightIndicator;
+    public GameObject connectButton;
     public Color materialActivated;
     public Color materialDeactivated;
     public Color materialdark;
+    public Color materialdim;
     public Color materialbright;
     public Color materialverybright;
-
     private TcpClient client;
     private NetworkStream stream;
     public bool IsConnected {get; private set;} = false;
 
     public string ip = "10.91.17.12"; // <- Replace with ESP IP
     public int port = 3333;
-    public GameObject connectButton;
-    int dryValue =2960;
-    int wetValue =1300;
+    // public string brokerIp = "192.168.4.1";
+    // public int brokerPort = 1883;
+    
+    int dryValue =3005;
+    int wetValue =2000;
     int brightValue = 1500;
     int darkValue = 200;
+
+    // Hilfsklassen für JSON-Serialisierung/Deserialisierung
+    [System.Serializable]
+    private class SensorData
+    {
+        public int Moisture;
+        public int Light;
+    }
+    
+    [System.Serializable]
+    private class CommandMessage
+    {
+        public string command;
+    }
 
     //connect this funcuin to a button to initialize connection
     public void Connect()
@@ -47,52 +64,79 @@ public class ESP32Connector : MonoBehaviour
         }
     }
 
-    // Function to send a Message to ESP32 hist call in Unity handler:
-    //FindObjectOfType<ESP32Connector>().Send("LED_ON");
-    // or call
-    //Send("VALUE:123");
-
     public void Send(string text)
     {
-        if (stream == null) return;
-        byte[] data = Encoding.ASCII.GetBytes(text + "\n");
-        stream.Write(data, 0, data.Length);
+        if (!IsConnected || stream == null) return;
+        
+        try
+        {
+            CommandMessage cmd = new CommandMessage { command = text};
+            string json = JsonUtility.ToJson(cmd);
+            Debug.Log("Prepared command: " + json);
+            // JSON als String mit Zeilenumbruch senden
+            byte[] data = Encoding.ASCII.GetBytes(json + "\n"); 
+            stream.Write(data, 0, data.Length);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Write error: " + e.Message);
+        }
     }
 
     // reciving message from ESP32
     void Update()
     {
+        if (!IsConnected) {
+            // connectButton.SetActive(true);
+            return;
+        }
+
+        // --- DATEN EMPFANGEN und PARSEN ---
         if (stream != null && stream.DataAvailable)
         {
-            try{
-                connectButton.SetActive(false);
-                byte[] buffer = new byte[256];
+            // connectButton.SetActive(false); 
+            try
+            {
+                byte[] buffer = new byte[1024]; // Puffergröße erhöht
                 int bytes = stream.Read(buffer, 0, buffer.Length);
                 string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
 
-                Debug.Log("ESP32: " + msg);
-                // put programm as in other scripts to handle the received message
-                string[] lines = msg.Split('\n');
-                    foreach (string line in lines)
-                    {
-                        if (line.StartsWith("LightValue:"))
-                        {
-                            int value = int.Parse(line.Split(':')[1]);
-                            UpdateWaterStatus(value);
-                        }
-                        else if (line.StartsWith("SoilValue:"))
-                        {
-                            int value = int.Parse(line.Split(':')[1]);
-                            UpdateLightStatus(value);
-                        }
+                // Datenstrom kann mehrere Zeilen enthalten, daher splitten
+                string[] lines = msg.Split('\n'); 
+                foreach (string line in lines)
+                {   
+                    string trimmedLine = line.Trim();
+                    if (string.IsNullOrEmpty(trimmedLine)) continue;
+                    
+                    Debug.Log("Raw received line: " + line);
+                    if(line.StartsWith("ACK:")) {
+                        continue; // ACK-Nachrichten ignorieren
                     }
+                    // VERSUCH, JSON zu parsen
+                    SensorData data = JsonUtility.FromJson<SensorData>(trimmedLine);
+                    Debug.Log("Received values: " + data.Moisture + ", " + data.Light);
+                    // Prüfen, ob das Parsen erfolgreich war (wir erwarten 'Moisture' und 'Light')
+                    if (data != null && data.Moisture != 0 || data.Light != 0) 
+                    {
+                        // Erfolgreich geparste Daten verwenden
+                        UpdateWaterStatus(data.Moisture);
+                        UpdateLightStatus(data.Light);
+                    }
+                    else
+                    {
+                        // Jetzt ignorieren wir alle nicht-JSON-Daten (die Bootloader-Meldungen!)
+                        Debug.LogWarning("Ignored non-JSON data: " + trimmedLine);
+                    }
+                }
             }
-            catch (System.Exception){
-                Debug.Log("Error while reading message");// Timeout or read error
+            catch (System.Exception e)
+            {
+                Debug.LogError("Read error: " + e.Message);
+                // Hier könnten Sie die Verbindung trennen, falls der Fehler kritisch ist
             }
         } 
         else {
-            connectButton.SetActive(true);
+            // Optional: Wenn längere Zeit keine Daten kommen, Button anzeigen oder neu verbinden
         }
     }
 
@@ -103,56 +147,60 @@ public class ESP32Connector : MonoBehaviour
         IsConnected = false;
         connectButton.SetActive(true);
     }
+
     void UpdateLightStatus(int dir)
     {
         // Implement light status update logic here
         int intervals = (brightValue - darkValue) / 3;
 
         if (dir <= darkValue)
-    {
-        Debug.Log("Level 0 very dark");
-        lightIndicator.GetComponent<SpriteRenderer>().color = materialdark;
-        materialdark.a = 0.5f;
+        {
+            Debug.Log("Level 0 very dark");
+            lightIndicator.GetComponent<SpriteRenderer>().color = materialdark;
+            materialdark.a = 0.4f;
+        }
+        else if (dir <= darkValue + intervals)
+        {
+            Debug.Log("Level 1 dark");
+            lightIndicator.GetComponent<SpriteRenderer>().color = materialdark;
+            materialdark.a = 0.8f;
+        }
+        else if (dir <= darkValue + intervals * 2)
+        {
+            Debug.Log("Level 2 medium light");
+            lightIndicator.GetComponent<SpriteRenderer>().color = materialdim;
+            materialdark.a = 0.8f;
+        }
+        else if (dir <= darkValue + intervals * 3)
+        {
+            Debug.Log("Level 3 bright");
+            lightIndicator.GetComponent<SpriteRenderer>().color = materialbright;
+            materialdark.a = 0.8f;
+        }
+        else
+        {
+            Debug.Log("Level 4 very bright");
+            lightIndicator.GetComponent<SpriteRenderer>().color = materialverybright;
+            materialdark.a = 0.8f;
+        }
     }
-    else if (dir <= darkValue + intervals)
-    {
-        Debug.Log("Level 1 dark");
-    }
-    else if (dir <= darkValue + intervals * 2)
-    {
-        Debug.Log("Level 2 medium light");
-    }
-    else if (dir <= darkValue + intervals * 3)
-    {
-        Debug.Log("Level 3 bright");
-    }
-    else if (dir <= brightValue)
-    {
-        Debug.Log("Level 4 very bright");
-    }
-    else
-    {
-        Debug.Log("Wert über brightValue – Fehler?");
-    }
-    }
+
     void UpdateWaterStatus(int dir)
     {
         int intervals = (dryValue - wetValue) / 3;   
-        if (dir > dryValue && dir < (wetValue + intervals))            
-            {
-            //Debug.Log("Water high");
+        if (dir < wetValue)            
+        {
+            Debug.Log("Water level very high");
             //if (highWaterLevel != null) highWaterLevel.SetActive(true);
             highWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
             //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(true);
             mediumWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
             //if (lowWaterLevel != null) lowWaterLevel.SetActive(true);
             lowWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
-
-
         }
-        else if (dir >= (wetValue + intervals) && dir < (dryValue - intervals))
+        else if (dir < wetValue + intervals)
         {
-            //Debug.Log("Water medium");
+            Debug.Log("Water level high");
             //if (highWaterLevel != null) highWaterLevel.SetActive(false);
             highWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
             //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(true);
@@ -161,9 +209,9 @@ public class ESP32Connector : MonoBehaviour
             lowWaterLevel.GetComponent<SpriteRenderer>().color = materialActivated;
 
         }
-        else if(dir < dryValue && dir > (dryValue - intervals))
+        else if(dir < wetValue + intervals * 2)
         {
-            //Debug.Log("Water low");
+            Debug.Log("Water level medium");
             //if (highWaterLevel != null) highWaterLevel.SetActive(false);
             highWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
             //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(false);
@@ -173,7 +221,13 @@ public class ESP32Connector : MonoBehaviour
         }
         else
         {
-            Debug.Log("Unknown water status:" + dir);
+            Debug.Log("Water level low");
+            //if (highWaterLevel != null) highWaterLevel.SetActive(false);
+            highWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
+            //if (mediumWaterLevel != null) mediumWaterLevel.SetActive(false);
+            mediumWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
+            //if (lowWaterLevel != null) lowWaterLevel.SetActive(false);
+            lowWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
         }    
     }
     //change max wet value according to plant requirement
@@ -181,6 +235,7 @@ public class ESP32Connector : MonoBehaviour
         if (wetValues.TryGetValue(requirement, out int value))
         {
             wetValue = value;
+            Debug.Log("Water need updated to: " + requirement.ToString() + " (" + value + ")");
         }
         else
         {
