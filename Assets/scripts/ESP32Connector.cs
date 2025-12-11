@@ -30,7 +30,7 @@ public class ESP32Connector : MonoBehaviour
     int brightValue = 1500;
     int darkValue = 200;
 
-    // Hilfsklassen für JSON-Serialisierung/Deserialisierung
+    // JSON-Serialisierung/Deserialisierung
     [System.Serializable]
     private class SensorData
     {
@@ -44,7 +44,7 @@ public class ESP32Connector : MonoBehaviour
         public string command;
     }
 
-    //connect this funcuin to a button to initialize connection
+    //connect this function to a button to initialize connection
     public void Connect()
     {
         if (IsConnected) return;
@@ -91,7 +91,7 @@ public class ESP32Connector : MonoBehaviour
             return;
         }
 
-        // --- DATEN EMPFANGEN und PARSEN ---
+        // --- RECIVE and PARS DATA ---
         if (stream != null && stream.DataAvailable)
         {
             // connectButton.SetActive(false); 
@@ -101,7 +101,7 @@ public class ESP32Connector : MonoBehaviour
                 int bytes = stream.Read(buffer, 0, buffer.Length);
                 string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
 
-                // Datenstrom kann mehrere Zeilen enthalten, daher splitten
+                // split lines
                 string[] lines = msg.Split('\n'); 
                 foreach (string line in lines)
                 {   
@@ -110,21 +110,21 @@ public class ESP32Connector : MonoBehaviour
                     
                     Debug.Log("Raw received line: " + line);
                     if(line.StartsWith("ACK:")) {
-                        continue; // ACK-Nachrichten ignorieren
+                        continue; // ignore ACK Message
                     }
-                    // VERSUCH, JSON zu parsen
+                    // try to JSON parse
                     SensorData data = JsonUtility.FromJson<SensorData>(trimmedLine);
                     Debug.Log("Received values: " + data.Moisture + ", " + data.Light);
-                    // Prüfen, ob das Parsen erfolgreich war (wir erwarten 'Moisture' und 'Light')
+                    // check if parsing was sucsessfull (expected 'Moisture' und 'Light')
                     if (data != null && data.Moisture != 0 || data.Light != 0) 
                     {
-                        // Erfolgreich geparste Daten verwenden
+                        // use parsed data
                         UpdateWaterStatus(data.Moisture);
                         UpdateLightStatus(data.Light);
                     }
                     else
                     {
-                        // Jetzt ignorieren wir alle nicht-JSON-Daten (die Bootloader-Meldungen!)
+                        // ignoring all data in the wrong format
                         Debug.LogWarning("Ignored non-JSON data: " + trimmedLine);
                     }
                 }
@@ -132,11 +132,10 @@ public class ESP32Connector : MonoBehaviour
             catch (System.Exception e)
             {
                 Debug.LogError("Read error: " + e.Message);
-                // Hier könnten Sie die Verbindung trennen, falls der Fehler kritisch ist
             }
         } 
         else {
-            // Optional: Wenn längere Zeit keine Daten kommen, Button anzeigen oder neu verbinden
+            // Optional: if mo values are recived for a long time
         }
     }
 
