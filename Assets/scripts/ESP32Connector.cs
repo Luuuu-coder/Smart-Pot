@@ -25,8 +25,8 @@ public class ESP32Connector : MonoBehaviour
     // public string brokerIp = "192.168.4.1";
     // public int brokerPort = 1883;
     
-    int dryValue =3005;
-    int wetValue =2000;
+    int dryValue =3000;
+    int wetValue =400;
     int brightValue = 1500;
     int darkValue = 200;
 
@@ -252,8 +252,8 @@ public class ESP32Connector : MonoBehaviour
     }
     private Dictionary<WaterRequirement, int> wetValues = new Dictionary<WaterRequirement, int>()
     {
-        { WaterRequirement.High, 1300 },
-        { WaterRequirement.Medium, 1700 },
-        { WaterRequirement.Low, 2100 }
+        { WaterRequirement.High, 700 },
+        { WaterRequirement.Medium, 1300 },
+        { WaterRequirement.Low, 2000 }
     };
 }
