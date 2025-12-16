@@ -13,6 +13,7 @@ public class ConnectionHandler : MonoBehaviour
     public string connectedtext = "Press to water the plant";
     
     public ESP32Connector esp32Connector;
+    public COMCommunication COMCommunication;
     private Action defaultAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,13 +30,14 @@ public class ConnectionHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (esp32Connector.IsConnected)
+        if (esp32Connector.IsConnected || COMCommunication.IsConnected)
         {
             if (buttonText.text != connectedtext) 
             {
                 buttonText.text = connectedtext;
                 connectButton.onClick.RemoveAllListeners();
-                connectButton.onClick.AddListener(() => esp32Connector.Send("WATER_PLANT"));
+                //connectButton.onClick.AddListener(() => esp32Connector.Send("WATER_PLANT"));
+                connectButton.onClick.AddListener(() => COMCommunication.Send("WATER_PLANT"));
                 connectButton.onClick.AddListener(() => partcilesAction.OnButtonPressed());
             }
             connectButton.interactable = true;
@@ -46,7 +48,8 @@ public class ConnectionHandler : MonoBehaviour
             buttonText.text = initialtext;
             // connectButton.colors = Color.white;
             connectButton.onClick.RemoveAllListeners();
-            connectButton.onClick.AddListener(() => esp32Connector.Connect());
+            //connectButton.onClick.AddListener(() => esp32Connector.Connect());
+            connectButton.onClick.AddListener(() => COMCommunication.Connect());
             connectButton.interactable = true;
         }
     }

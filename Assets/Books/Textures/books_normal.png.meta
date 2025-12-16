@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 796a8fa7ef8f05b4c91fe2f2fe42054c
+=======
+guid: 3abf3a9979c3e5348a9a6af8452af866
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -7,7 +11,11 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+<<<<<<< Updated upstream
     sRGBTexture: 0
+=======
+    sRGBTexture: 1
+>>>>>>> Stashed changes
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -54,7 +62,11 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
+<<<<<<< Updated upstream
   textureType: 1
+=======
+  textureType: 0
+>>>>>>> Stashed changes
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -69,7 +81,11 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
+<<<<<<< Updated upstream
     maxTextureSize: 512
+=======
+    maxTextureSize: 2048
+>>>>>>> Stashed changes
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -93,6 +109,35 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< Updated upstream
+=======
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> Stashed changes
   spriteSheet:
     serializedVersion: 2
     sprites: []
@@ -115,6 +160,7 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+<<<<<<< Updated upstream
 AssetOrigin:
   serializedVersion: 1
   productId: 3356
@@ -122,3 +168,5 @@ AssetOrigin:
   packageVersion: 2.1
   assetPath: Assets/Books/Textures/books_normal.png
   uploadId: 749883
+=======
+>>>>>>> Stashed changes

@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class ParticleButtonController : MonoBehaviour
 {
     public ParticleSystem waterParcticels;
-    public GameObject buttonObject; // optional, um Button visuell zu deaktivieren/aktivieren
+    public GameObject buttonObject; // optional, um Button visuell zu deaktivieren/aktivieren^
+    public COMCommunication comCommunication;
+    public ESP32Connector esp32Connector;
 
     private bool isPlaying = false;
 
@@ -16,6 +18,8 @@ public class ParticleButtonController : MonoBehaviour
         isPlaying = true;
         
         waterParcticels.gameObject.SetActive(true);
+        comCommunication.Send("WATER_PLANT");
+        esp32Connector.Send("WATER_PLANT");
         
         waterParcticels.Play();
         
