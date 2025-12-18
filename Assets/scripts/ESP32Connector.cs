@@ -73,9 +73,11 @@ public class ESP32Connector : MonoBehaviour
             CommandMessage cmd = new CommandMessage { command = text};
             string json = JsonUtility.ToJson(cmd);
             Debug.Log("Prepared command: " + json);
-            // JSON als String mit Zeilenumbruch senden
+            // JSON as String 
             byte[] data = Encoding.ASCII.GetBytes(json + "\n"); 
+            Debug.Log("Message encoded");
             stream.Write(data, 0, data.Length);
+            Debug.Log("Message sent");
         }
         catch (System.Exception e)
         {

@@ -36,8 +36,8 @@ public class ConnectionHandler : MonoBehaviour
             {
                 buttonText.text = connectedtext;
                 connectButton.onClick.RemoveAllListeners();
-                //connectButton.onClick.AddListener(() => esp32Connector.Send("WATER_PLANT"));
-                connectButton.onClick.AddListener(() => COMCommunication.Send("WATER_PLANT"));
+                connectButton.onClick.AddListener(() => esp32Connector.Send("WATER_PLANT"));
+                //connectButton.onClick.AddListener(() => COMCommunication.Send("WATER_PLANT"));
                 connectButton.onClick.AddListener(() => partcilesAction.OnButtonPressed());
             }
             connectButton.interactable = true;
@@ -48,8 +48,8 @@ public class ConnectionHandler : MonoBehaviour
             buttonText.text = initialtext;
             // connectButton.colors = Color.white;
             connectButton.onClick.RemoveAllListeners();
-            //connectButton.onClick.AddListener(() => esp32Connector.Connect());
-            connectButton.onClick.AddListener(() => COMCommunication.Connect());
+            connectButton.onClick.AddListener(() => esp32Connector.Connect());
+            //connectButton.onClick.AddListener(() => COMCommunication.Connect());
             connectButton.interactable = true;
         }
     }
