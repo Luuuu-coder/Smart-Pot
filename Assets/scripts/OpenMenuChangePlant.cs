@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class ApriMenu : MonoBehaviour
 {
-    public GameObject menuDaAprire;
+    public GameObject menuToOpen;
 
     public void Apri()
     {
-        if (menuDaAprire != null)
+        if (menuToOpen != null)
         {
-            menuDaAprire.SetActive(true);
-            Debug.Log("MenuOpzioni attivato!");
+            menuToOpen.SetActive(true);
+            Debug.Log("Menu avtivated!");
         }
         else
         {
-            Debug.Log("menuDaAprire NON assegnato!");
+            Debug.Log("<menu not assigned>!");
         }
     }
 }

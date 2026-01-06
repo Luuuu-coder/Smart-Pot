@@ -6,7 +6,7 @@ public class PlantManager : MonoBehaviour
 
     public void ActivatePlant(int index)
     {
-        // Disattiva tutte le piante
+        // deactivate all plants
         for (int i = 0; i < plants.Length; i++)
         {
             plants[i].SetActive(i == index);

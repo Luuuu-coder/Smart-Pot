@@ -1,3 +1,4 @@
+// FOR COM COMMUNICATION
 #include <ArduinoJson.h>
 
 int sensorPinMoisture = 32;
@@ -13,7 +14,7 @@ const long sendInterval = 1000; // ms
 
 void setup() {
   Serial.begin(115200);
-  delay(2000); // wichtig für stabile USB-Verbindung
+  delay(2000); // for stable connection
 
   pinMode(sensorPinMoisture, INPUT);
   pinMode(sensorPinSun, INPUT);
@@ -27,7 +28,7 @@ void setup() {
 }
 
 void loop() {
-  // --- 1. DATEN EMPFANGEN (Commands über Serial) ---
+  // --- 1. recive data ---
   if (Serial.available()) {
     String receivedJson = Serial.readStringUntil('\n');
 
@@ -43,7 +44,7 @@ void loop() {
 
           digitalWrite(pumpPin, HIGH);
           digitalWrite(LED_BUILTIN, HIGH);
-          delay(3000);  // bewusst blockierend
+          delay(3000);  
           digitalWrite(pumpPin, LOW);
           digitalWrite(LED_BUILTIN, LOW);
         }
@@ -51,7 +52,7 @@ void loop() {
     }
   }
 
-  // --- 2. DATEN SENDEN (zeitgesteuert) ---
+  // --- 2. send data ---
   long now = millis();
   if (now - lastSendTime >= sendInterval) {
     lastSendTime = now;
@@ -66,6 +67,6 @@ void loop() {
     String outputJson;
     serializeJson(doc, outputJson);
 
-    Serial.println(outputJson); // wichtig: \n als Paketende
+    Serial.println(outputJson); 
   }
 }

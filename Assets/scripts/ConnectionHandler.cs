@@ -21,7 +21,7 @@ public class ConnectionHandler : MonoBehaviour
         //check if components are assigned
         if (connectButton == null || buttonText == null || esp32Connector == null)
         {
-            Debug.LogError("Fehlende Komponente. Stellen Sie sicher, dass Button, Text und VsArduinoSkript im Inspector zugewiesen sind.");
+            Debug.LogError("Missing component. make sure Objects are defined in inspector");
             enabled = false; 
             return;
         }

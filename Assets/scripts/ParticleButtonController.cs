@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class ParticleButtonController : MonoBehaviour
 {
+    // References of gameObjects and components
     public ParticleSystem waterParcticels;
-    public GameObject buttonObject; // optional, um Button visuell zu deaktivieren/aktivieren^
+    public GameObject buttonObject; 
     public COMCommunication comCommunication;
     public ESP32Connector esp32Connector;
 
@@ -13,7 +14,7 @@ public class ParticleButtonController : MonoBehaviour
 
     public void OnButtonPressed()
     {
-        if (isPlaying) return; // verhindert erneutes Starten während Partikel laufen
+        if (isPlaying) return; // avoids restart of particles if already playing
 
         isPlaying = true;
         
@@ -23,13 +24,11 @@ public class ParticleButtonController : MonoBehaviour
         
         waterParcticels.Play();
         
-        // optional: Button deaktivieren, wenn du willst
-        // if(buttonObject != null) buttonObject.SetActive(false);
         
         buttonObject.GetComponent<Button>().interactable = false;
 
 
-        // Starte Coroutine, die wartet bis Partikel fertig sind
+        // Start Coroutine, wait for particles to finish
         // Thread.Sleep(2000);
         StartCoroutine(WaitForParticles());
         
@@ -37,20 +36,20 @@ public class ParticleButtonController : MonoBehaviour
 
     private System.Collections.IEnumerator WaitForParticles()
     {
-        // warte, bis Partikel fertig sind
+        // wait until all particles are dead
         while (waterParcticels.IsAlive(true))
         {
             yield return null;
         }
-        // Partikel sind durchgelaufen
+        // Particles finished
         isPlaying = false;
 
-        // Button wieder aktivieren
+        // reactivate button
         // if(buttonObject != null) buttonObject.SetActive(true);
         buttonObject.GetComponent<Button>().interactable = true;
 
-        // Partikel stoppen und resetten
-        waterParcticels.Clear(); // löscht alte Partikel
-        waterParcticels.Stop();  // sichert, dass es gestoppt ist
+        // stop and clear particles
+        waterParcticels.Clear(); // delete existing particles
+        waterParcticels.Stop();  // ensure particle system is stopped
     }
 }

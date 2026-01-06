@@ -5,17 +5,22 @@ using System.Collections.Generic;
 
 public class ESP32Connector : MonoBehaviour
 {
+    //game objects for UI indicators
     public GameObject highWaterLevel;      // activated when Water detected
     public GameObject mediumWaterLevel;
     public GameObject lowWaterLevel;        // activated when no water detected
     public GameObject lightIndicator;
     public GameObject connectButton;
+
+    //colors for different states
     public Color materialActivated;
     public Color materialDeactivated;
     public Color materialdark;
     public Color materialdim;
     public Color materialbright;
     public Color materialverybright;
+
+    // TCP Client setup (Wifi connection)
     private TcpClient client;
     private NetworkStream stream;
     public bool IsConnected {get; private set;} = false;
@@ -25,12 +30,13 @@ public class ESP32Connector : MonoBehaviour
     // public string brokerIp = "192.168.4.1";
     // public int brokerPort = 1883;
     
+    // reference values
     int dryValue =3000;
     int wetValue =400;
     int brightValue = 1500;
     int darkValue = 200;
 
-    // JSON-Serialisierung/Deserialisierung
+    // auxiliary classes for JSON parsing
     [System.Serializable]
     private class SensorData
     {
@@ -38,12 +44,14 @@ public class ESP32Connector : MonoBehaviour
         public int Light;
     }
     
+    // auxiliary class for sending commands
     [System.Serializable]
     private class CommandMessage
     {
         public string command;
     }
 
+    // ---------- CONNECT ----------
     //connect this function to a button to initialize connection
     public void Connect()
     {
@@ -64,6 +72,8 @@ public class ESP32Connector : MonoBehaviour
         }
     }
 
+    // ---------- SEND ----------
+    // send message to ESP32
     public void Send(string text)
     {
         if (!IsConnected || stream == null) return;
@@ -85,6 +95,7 @@ public class ESP32Connector : MonoBehaviour
         }
     }
 
+    // ---------- RECEIVE ----------
     // reciving message from ESP32
     void Update()
     {
@@ -149,6 +160,7 @@ public class ESP32Connector : MonoBehaviour
         connectButton.SetActive(true);
     }
 
+    // ---------- UI LOGIC  ----------
     void UpdateLightStatus(int dir)
     {
         // Implement light status update logic here
@@ -231,6 +243,7 @@ public class ESP32Connector : MonoBehaviour
             lowWaterLevel.GetComponent<SpriteRenderer>().color = materialDeactivated;
         }    
     }
+    // ---------- WATER REQUIREMENT ----------
     //change max wet value according to plant requirement
     public void SetWaterRequirement(WaterRequirement requirement){
         if (wetValues.TryGetValue(requirement, out int value))

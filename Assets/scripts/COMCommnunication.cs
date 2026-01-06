@@ -5,12 +5,14 @@ using System.Collections.Generic;
 
 public class COMCommunication : MonoBehaviour
 {
+    //game objects for UI indicators
     public GameObject highWaterLevel;
     public GameObject mediumWaterLevel;
     public GameObject lowWaterLevel;
     public GameObject lightIndicator;
     public GameObject connectButton;
-
+    
+    //colors for different states
     public Color materialActivated;
     public Color materialDeactivated;
     public Color materialdark;
@@ -18,18 +20,21 @@ public class COMCommunication : MonoBehaviour
     public Color materialbright;
     public Color materialverybright;
 
+    //serial port set up
     private SerialPort serial;
     public bool IsConnected { get; private set; } = false;
 
     [Header("Serial Settings")]
-    public string comPort = "COM19";     // << ANPASSEN
+    public string comPort = "COM19";     // << apadt to your system
     public int baudRate = 115200;
 
+    // reference values
     int dryValue = 3000;
     int wetValue = 400;
     int brightValue = 1500;
     int darkValue = 200;
 
+    // auxiliary classes for JSON parsing
     [System.Serializable]
     private class SensorData
     {
@@ -37,6 +42,7 @@ public class COMCommunication : MonoBehaviour
         public int lightValue;
     }
 
+    // auxiliary class for sending commands
     [System.Serializable]
     private class CommandMessage
     {
@@ -108,7 +114,7 @@ public class COMCommunication : MonoBehaviour
         }
         catch (System.TimeoutException)
         {
-            // normal, ignorieren
+            // normal, ignore
         }
         catch (System.Exception e)
         {
@@ -124,7 +130,7 @@ public class COMCommunication : MonoBehaviour
         IsConnected = false;
     }
 
-    // ---------- UI LOGIC (unverändert) ----------
+    // ---------- UI LOGIC  ----------
     void UpdateLightStatus(int dir)
     {
         int intervals = (brightValue - darkValue) / 3;
@@ -172,6 +178,7 @@ public class COMCommunication : MonoBehaviour
     }
 
     // ---------- WATER REQUIREMENT ----------
+    //change max wet value according to plant requirement
     public void SetHighWater() => SetWaterRequirement(WaterRequirement.High);
     public void SetMediumWater() => SetWaterRequirement(WaterRequirement.Medium);
     public void SetLowWater() => SetWaterRequirement(WaterRequirement.Low);

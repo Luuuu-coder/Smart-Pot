@@ -6489,8 +6489,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 218106865}
-        m_TargetAssemblyTypeName: BottonePianta, Assembly-CSharp
-        m_MethodName: MostraScheda
+        m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
+        m_MethodName: ShowCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6547,11 +6547,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 218106860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b30e91058f99fe459456c9b7f1fb661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 414128906}
-  menuLibreria: {fileID: 1575584374}
+  plantCard: {fileID: 414128906}
+  libraryMenu: {fileID: 1575584374}
 --- !u!4 &235073023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 532237491902114306, guid: d386d629c043bd849840935643a668b9, type: 3}
@@ -8288,8 +8288,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 396568617}
-        m_TargetAssemblyTypeName: BottonePianta, Assembly-CSharp
-        m_MethodName: MostraScheda
+        m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
+        m_MethodName: ShowCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8346,11 +8346,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 396568612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b30e91058f99fe459456c9b7f1fb661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 4385650}
-  menuLibreria: {fileID: 1575584374}
+  plantCard: {fileID: 4385650}
+  libraryMenu: {fileID: 1575584374}
 --- !u!1 &409962953
 GameObject:
   m_ObjectHideFlags: 0
@@ -9091,8 +9091,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 450484988}
-        m_TargetAssemblyTypeName: BottonePianta, Assembly-CSharp
-        m_MethodName: MostraScheda
+        m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
+        m_MethodName: ShowCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9149,11 +9149,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 450484983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b30e91058f99fe459456c9b7f1fb661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 2024679646}
-  menuLibreria: {fileID: 1575584374}
+  plantCard: {fileID: 2024679646}
+  libraryMenu: {fileID: 1575584374}
 --- !u!1 &455705554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d1c0fcdff820dd14795689bbc593257f, type: 3}
@@ -11721,8 +11721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 1575584374}
-  menuLibreria: {fileID: 2024679646}
+  plantCard: {fileID: 0}
+  libraryMenu: {fileID: 0}
 --- !u!114 &752475392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11982,8 +11982,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 801055819}
-        m_TargetAssemblyTypeName: BottonePianta, Assembly-CSharp
-        m_MethodName: MostraScheda
+        m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
+        m_MethodName: ShowCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12040,11 +12040,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 801055814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b30e91058f99fe459456c9b7f1fb661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 1623495441}
-  menuLibreria: {fileID: 1575584374}
+  plantCard: {fileID: 1623495441}
+  libraryMenu: {fileID: 1575584374}
 --- !u!1 &803220841
 GameObject:
   m_ObjectHideFlags: 0
@@ -12544,8 +12544,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 860015287}
-        m_TargetAssemblyTypeName: BottonePianta, Assembly-CSharp
-        m_MethodName: MostraScheda
+        m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
+        m_MethodName: ShowCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12602,11 +12602,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 860015282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b30e91058f99fe459456c9b7f1fb661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 978087597}
-  menuLibreria: {fileID: 1575584374}
+  plantCard: {fileID: 978087597}
+  libraryMenu: {fileID: 1575584374}
 --- !u!1 &864853398
 GameObject:
   m_ObjectHideFlags: 0
@@ -14289,8 +14289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 1575584374}
-  menuLibreria: {fileID: 978087597}
+  plantCard: {fileID: 0}
+  libraryMenu: {fileID: 0}
 --- !u!114 &1140704670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15020,7 +15020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3397cb22860ac429b764390a8004f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuDaAprire: {fileID: 1568280549}
+  menuToOpen: {fileID: 0}
 --- !u!1 &1310429862
 GameObject:
   m_ObjectHideFlags: 0
@@ -16758,24 +16758,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8a75966e9f7df4b9c6dfcf4e824eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuDaAprire: {fileID: 343573990}
-  tastoAttivazione:
+  menuToOpen: {fileID: 343573990}
+  activationKey:
     m_UseReference: 0
     m_Action:
-      m_Name: Tasto Attivazione
+      m_Name: Activation Key
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: d70e3ddd-51a7-4544-b578-77fff0056f63
+      m_Id: 47dd8f84-3284-44e3-ac15-210116a26066
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: a19c0f2b-0bd0-4bed-885d-27e74a0077c2
+        m_Id: e3789edd-566d-428e-8da2-1372a83a847d
         m_Path: <XRController>{LeftHand}/primaryButton
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Tasto Attivazione
+        m_Action: Activation Key
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
@@ -18056,8 +18056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 1575584374}
-  menuLibreria: {fileID: 1623495441}
+  plantCard: {fileID: 0}
+  libraryMenu: {fileID: 0}
 --- !u!114 &1647445599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19334,8 +19334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 1575584374}
-  menuLibreria: {fileID: 414128906}
+  plantCard: {fileID: 0}
+  libraryMenu: {fileID: 0}
 --- !u!114 &1808598028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20144,8 +20144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ade660ee277d147af3e24cdf19ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schedaDellaPianta: {fileID: 1575584374}
-  menuLibreria: {fileID: 4385650}
+  plantCard: {fileID: 0}
+  libraryMenu: {fileID: 0}
 --- !u!114 &1979757824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20269,24 +20269,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8a75966e9f7df4b9c6dfcf4e824eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuDaAprire: {fileID: 179785664}
-  tastoAttivazione:
+  menuToOpen: {fileID: 179785664}
+  activationKey:
     m_UseReference: 0
     m_Action:
-      m_Name: Tasto Attivazione
+      m_Name: Activation Key
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: d70e3ddd-51a7-4544-b578-77fff0056f63
+      m_Id: de7f3766-d98e-4afd-9fa2-31ba07a7fa1a
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: a19c0f2b-0bd0-4bed-885d-27e74a0077c2
+        m_Id: 5cf88885-a899-4e1e-9afe-4f8e27334b34
         m_Path: <XRController>{RightHand}/primaryButton
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Tasto Attivazione
+        m_Action: Activation Key
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}

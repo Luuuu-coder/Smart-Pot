@@ -3,34 +3,34 @@ using UnityEngine.InputSystem;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject menuDaAprire;
-    public InputActionProperty tastoAttivazione;
+    public GameObject menuToOpen;
+    public InputActionProperty activationKey;
 
-    // --- NUOVA PARTE FONDAMENTALE ---
-    // Appena l'oggetto si attiva, accendiamo l'ascolto del tasto
+
+    //  As soon as the object is enabled, we enable key listening
     void OnEnable()
     {
-        tastoAttivazione.action.Enable();
+        activationKey.action.Enable();
     }
 
-    // Appena l'oggetto si disattiva, spegniamo l'ascolto (per pulizia)
+    // As soon as the object is disabled, we stop listening (for cleanup)
     void OnDisable()
     {
-        tastoAttivazione.action.Disable();
+        activationKey.action.Disable();
     }
     // --------------------------------
 
     void Update()
     {
-        // Ora il tasto dovrebbe rispondere
-        if (tastoAttivazione.action.WasPressedThisFrame())
+        // Now the key should respond
+        if (activationKey.action.WasPressedThisFrame())
         {
-            //Debug.Log("TASTO PREMUTO CORRETTAMENTE!"); // Lasciamo il debug per sicurezza
+            //Debug.Log("KEY PRESSED CORRECTLY!"); // Keep this for safety if needed
            
-            if (menuDaAprire != null)
+            if (menuToOpen != null)
             {
-                bool statoAttuale = menuDaAprire.activeSelf;
-                menuDaAprire.SetActive(!statoAttuale);
+                bool currentState = menuToOpen.activeSelf;
+                menuToOpen.SetActive(!currentState);
             }
         }
     }

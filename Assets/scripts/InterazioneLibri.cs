@@ -2,28 +2,28 @@ using UnityEngine;
 
 public class InterazioneLibri : MonoBehaviour
 {
-    [Header("Impostazioni Menu")]
-    // Qui trascinerai il tuo menu (il GameObject che contiene Canvas/Pannello)
+    [Header("Menu Settings")]
+    // Drag your menu here (the GameObject that contains the Canvas/Panel)
     public GameObject menuDaAprire;
 
-    // Questa funzione viene chiamata automaticamente da Unity quando clicchi l'oggetto
+    // This function is automatically called by Unity when you click the object
     private void OnMouseDown()
     {
-        // Controlla se abbiamo assegnato il menu per evitare errori
+        // Check if the menu is assigned to avoid errors
         if (menuDaAprire != null)
         {
-            // Attiva il menu
+            // Enable the menu
             menuDaAprire.SetActive(true);
             
-            // Opzionale: Se vuoi sbloccare il mouse per cliccare nel menu
+            //  Optional: Unlock the mouse so you can click in the menu
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            Debug.Log("Menu aperto!");
+            Debug.Log("Menu opened!");
         }
         else
         {
-            Debug.LogError("Non hai assegnato il Menu nello script!");
+            Debug.LogError("You haven't assigned the Menu in the script!");
         }
     }
 }

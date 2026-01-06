@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class BottonePianta : MonoBehaviour
+public class PlantButton : MonoBehaviour
 {
     [Header("WHAT DO I OPEN?")]
     public GameObject plantCard; // Drag the specific plant card here (e.g. RoseCard)
 
     [Header("WHAT DO I CLOSE?")]
-    public GameObject libraryMenu;      // Drag the menu with all the buttons here
+    public GameObject libraryMenu; // Drag the menu with all the buttons here
 
-    // Questa è la funzione che collegheremo al click
+    // This is the function we will connect to the button click
     public void ShowCard()
     {
-        // 1. Accendi la scheda della pianta
+        // 1. Enable the plant card
         if (plantCard != null)
         {
             plantCard.SetActive(true);
         }
 
-        // 2. Spegni il menu della libreria (così non copre la scheda)
+        // 2. Disable the library menu (so it doesn't cover the card)
         if (libraryMenu != null)
         {
             libraryMenu.SetActive(false);

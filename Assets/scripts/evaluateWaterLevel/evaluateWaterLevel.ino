@@ -1,9 +1,10 @@
+// FOR WIFI COMMUNICATION
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <ArduinoJson.h>
 
-// const char* ssid = "SmartPotAP";
-// const char* password = "SmartPotAP";
+const char* ssid = "Wifi";
+const char* password = "Password";
 WiFiServer server(3333);
 // IPAddress local_ip(192, 168, 4, 1);
 // IPAddress gateway_ip(192, 168, 4, 1);
@@ -22,7 +23,7 @@ int lightValue;
 String unityInput;
 
 WiFiClient activeClient;
-long lastSendTime = 0; // Für zeitgesteuertes Senden
+long lastSendTime = 0; // sending time control
 const long sendInterval = 1000;
 
 void setup() {
@@ -31,7 +32,7 @@ void setup() {
 
   pinMode(sensorPinMoisture, INPUT);
   pinMode(pumpPin, OUTPUT);
-  // pin to semontrate activation of the pump
+  // pin to demonstrate activation of the pump
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   // 1. Starte Access Point (AP)
@@ -44,33 +45,33 @@ void setup() {
 
   server.begin();
 
-  // WICHTIG: 5 Sekunden warten, bis der Bootloader fertig ist und die TCP-Sockets sauber sind
+  // wait 5 s until Bootloader ready and TCP-Sockets configured
   delay(5000);
   Serial.print("Bootloader ready");
 }
 
 void loop() {
-  // --- 1. AUF NEUE VERBINDUNG PRÜFEN ---
-  // Wenn kein Client aktiv ist, prüfen, ob ein neuer verfügbar ist
+  // --- 1. check for new connection ---
+  // if no client connected, lokk for new client
    WiFiClient client = server.available();
   if (!client) return;
   
   if (!activeClient || !activeClient.connected()) {
-    activeClient.stop(); // Alte, getrennte Verbindung sicher beenden
+    activeClient.stop(); // close old connections safely
 
   WiFiClient client = server.available();
   // if (!client) return;
   if (activeClient) {
-      // Wenn ein neuer Client verbunden ist, kurz warten
+      // If new client connected wait for 1 s
       delay(10); 
       Serial.println("active client");
     }
-    // Wenn kein neuer Client da ist, die loop() verlassen und neu starten
+    // if no new client exit loop() and restart
     if (!activeClient) return; 
   }
 
-  // --- 2. DATEN EMPFANGEN (COMMANDS) ---
-  // Nur lesen, wenn Daten verfügbar sind
+  // --- 2. recive data (COMMANDS) ---
+  // read only if data avalibale
   if (activeClient.available()) {
     Serial.println("client avalibale");
     String receivedJson = activeClient.readStringUntil('\n');
@@ -83,7 +84,7 @@ void loop() {
         const char* command = doc["command"];
         
         if(command != nullptr && String(command) == "WATER_PLANT"){
-          // Pumpen-Logik (bleibt blockierend, da es ein Befehl ist)
+          // Pump-Logic 
           digitalWrite(pumpPin, HIGH);
           digitalWrite(LED_BUILTIN, HIGH);
           delay(3000);
@@ -93,8 +94,8 @@ void loop() {
       }
     }
   }
-  // --- 3. DATEN SENDEN (ZEITGESTEUERT) ---
-  // Senden nur, wenn eine aktive Verbindung besteht UND die Zeit vergangen ist
+  // --- 3. send data (fixed time interval) ---
+  // Send only if connected and time has passed
   long now = millis();
   if (activeClient.connected() && (now - lastSendTime >= sendInterval)) {
     lastSendTime = now;
@@ -102,7 +103,7 @@ void loop() {
     soilMoistureValue = analogRead(sensorPinMoisture);
     lightValue = analogRead(sensorPinSun);
     
-    // JSON-Dokument erstellen und senden (wie zuvor)
+    // create JSON-Document and send
     StaticJsonDocument<256> doc;
     doc["soilValue"] = soilMoistureValue;
     doc["lightValue"] = lightValue;
@@ -110,9 +111,8 @@ void loop() {
     String outputJson;
     serializeJson(doc, outputJson);
     
-    // Senden
+    // Send
     activeClient.println(outputJson); 
     Serial.println(outputJson);
-    // WICHTIG: KEIN delay HIER! Die loop() läuft weiter.
   }
 }

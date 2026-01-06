@@ -1,32 +1,32 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Fondamentale
+using UnityEngine.InputSystem; 
 
 public class GestoreMenu : MonoBehaviour
 {
-    public GameObject ilMioMenu;
+    public GameObject myMenu;
 
-    // Questa variabile magica ci permette di scegliere i tasti dall'Inspector
-    public InputAction tastoMenu;
+    // This variable lets us choose the key from the Inspector
+    public InputAction manuKey;
 
     private void OnEnable()
     {
-        tastoMenu.Enable(); // Attiva l'ascolto del tasto
+        manuKey.Enable(); // Enable key listening
     }
 
     private void OnDisable()
     {
-        tastoMenu.Disable(); // Disattiva l'ascolto
+        manuKey.Disable(); // Disable key listening
     }
 
     void Update()
     {
-        // Se il tasto configurato è stato premuto...
-        if (tastoMenu.WasPressedThisFrame())
+        // If the configured key was pressed...
+        if (manuKey.WasPressedThisFrame())
         {
-            if (ilMioMenu != null)
+            if (myMenu != null)
             {
-                bool stato = ilMioMenu.activeSelf;
-                ilMioMenu.SetActive(!stato);
+                bool stato = myMenu.activeSelf;
+                myMenu.SetActive(!stato);
             }
         }
     }
